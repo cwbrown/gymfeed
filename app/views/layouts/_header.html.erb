@@ -8,10 +8,14 @@
       </button>
       <a class="brand" href="#">Gym Dashboard</a>
       <div class="nav-collapse collapse">
-        <ul class="nav pull-right">            
+        <ul class="nav pull-right">
           <li><a href="#yesterday"><i class="icon-backward icon-white"></i> Yesterday</a></li>
-          <li class="divider-vertical"></li>
           <li><a href="#tomorrow">Tomorrow <i class="icon-forward icon-white"></i></a></li>
+          <% if user_signed_in? %>
+            <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path)  %> </li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
