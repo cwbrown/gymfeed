@@ -1,5 +1,11 @@
 Gymfeed::Application.routes.draw do
   
+  resources :scores
+
+  resources :workouts
+
+  resources :gymdays
+
   root :to => "home#index"
   
   devise_for :users

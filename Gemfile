@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.0.1'
 # Using mongodb instead of SQL or Postgres
 #gem "mongoid", "~> 3.1.4"
 gem 'mongoid', github: 'mongoid/mongoid' 
+gem 'bson_ext'
 
 gem "devise", "~> 3.0.0.rc"
 
