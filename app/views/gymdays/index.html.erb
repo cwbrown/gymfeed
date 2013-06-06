@@ -1,0 +1,27 @@
+<h1>Listing gymdays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gymdays.each do |gymday| %>
+      <tr>
+        <td><%= gymday.location %></td>
+        <td><%= link_to 'Show', gymday %></td>
+        <td><%= link_to 'Edit', edit_gymday_path(gymday) %></td>
+        <td><%= link_to 'Destroy', gymday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gymday', new_gymday_path %>
