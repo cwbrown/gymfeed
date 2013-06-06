@@ -1,3 +1,9 @@
 == README
 
 A rails app initially for recording and publishing workout scores at a CrossFit or similar gym.
+
+Other features may eventually include:
+
+* Class registration
+* Workout design
+* Plugins
