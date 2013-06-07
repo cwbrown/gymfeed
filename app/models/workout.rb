@@ -3,6 +3,6 @@ class Workout
   field :name, type: String
   field :program, type: String
   field :description, type: String
-  embedded_in :gymday
-  embeds_many :scores
+  belongs_to :gymday
+  has_many :scores
 end

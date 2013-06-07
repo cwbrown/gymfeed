@@ -4,10 +4,10 @@
   <%= devise_error_messages! %>
 
   <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+  <%= f.text_field :name, :autofocus => true %></p>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email %></div>
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
