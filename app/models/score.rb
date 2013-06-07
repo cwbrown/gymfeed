@@ -4,6 +4,6 @@ class Score
   field :completed, type: DateTime
   field :scaled, type: Boolean
   field :personal_record, type: Boolean
-  belongs_to :workout
+  belongs_to :gymday
   belongs_to :user
 end

@@ -1,4 +1,5 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%= user.name %> </p>
+<% @scores.each do |score| %>
+  <p>User: <%= score.user.name %> </p>
+  <p>Value: <%= score.value %> </p>
 <% end %>
