@@ -14,14 +14,16 @@
                 <th>Name</th>
                 <th>Score</th>
                 <th>Record</th>
+                <th>Completed</th>
               </tr>
             </thead>            
             <tbody>
             <% @today.scores.each do |score| %>
               <tr class=<%= score.personal_record? ? "success" : "" %>>
                 <td><%= score.user.name %></td>
-                <td><%= score.value %></td>
+                <td><%= score.value %><%= score.scaled? ? "*" : ""%></td>
                 <td><i class=<%= score.personal_record? ? "icon-check" : "icon-minus" %>></i></td>
+                <td><%= score.completed.strftime("%I:%M %a %B %d, %Y") %></td>
               </tr>
             <% end %>
             </tbody>
