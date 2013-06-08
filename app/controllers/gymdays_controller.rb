@@ -4,7 +4,8 @@ class GymdaysController < ApplicationController
   # GET /gymdays
   # GET /gymdays.json
   def index
-    @gymdays = Gymday.all
+    #@gymdays = Gymday.all
+    @today = Gymday.find_by(gym_date: Date.today) #where(gym_date: Date.today)
   end
 
   # GET /gymdays/1

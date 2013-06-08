@@ -6,4 +6,9 @@ class Score
   field :personal_record, type: Boolean
   belongs_to :gymday
   belongs_to :user
+
+  def pr?
+    personal_record?
+  end
+
 end

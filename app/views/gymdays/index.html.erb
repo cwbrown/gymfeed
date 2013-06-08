@@ -1,27 +1,30 @@
-<h1>Listing gymdays</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @gymdays.each do |gymday| %>
-      <tr>
-        <td><%= gymday.location %></td>
-        <td><%= link_to 'Show', gymday %></td>
-        <td><%= link_to 'Edit', edit_gymday_path(gymday) %></td>
-        <td><%= link_to 'Destroy', gymday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Gymday', new_gymday_path %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2 sidebar">
+          <!--Sidebar content-->
+          <p><%= @today.workout.description %></p>
+        </div>
+      <div class="span10">
+          <div class="span2">
+          </div>
+          <div class="span7">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Record</th>
+              </tr>
+            </thead>            
+            <tbody>
+            <% @today.scores.each do |score| %>
+              <tr class=<%= score.personal_record? ? "success" : "" %>>
+                <td><%= score.user.name %></td>
+                <td><%= score.value %></td>
+                <td><i class=<%= score.personal_record? ? "icon-check" : "icon-minus" %>></i></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>

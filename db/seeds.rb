@@ -14,9 +14,9 @@ user3 = User.create! :name => 'Chris Brown', :email => 'chris@emerfit.com', :pas
 puts 'New user created: ' << user3.name
 
 puts "SETTING UP DEFAULT GYM DAY 1"
-gymday1 = Gymday.create!(location: 'EmerFit', gym_date: '20-06-2013', 
+gymday1 = Gymday.create!(location: 'EmerFit', gym_date: Date.today, 
 	workout: Workout.new(name: 'Helen', program: 'wod', description: '3 rounds Run 400m, 12 Pull-ups, 21 Swings'))
 
-gymday1.scores.create!(value: '7:02', completed: DateTime.now , scaled: 'False', personal_record: 'False', user: user1)
-gymday1.scores.create!(value: '7:30', completed: DateTime.now, scaled: 'False', personal_record: 'True', user: user2)
-gymday1.scores.create!(value: '8:02', completed: DateTime.now, scaled: 'False', personal_record: 'False', user: user3)
+gymday1.scores.create!(value: '7:02', completed: DateTime.now , scaled: false, personal_record: false, user: user1)
+gymday1.scores.create!(value: '7:30', completed: DateTime.now, scaled: false, personal_record: true, user: user2)
+gymday1.scores.create!(value: '8:02', completed: DateTime.now, scaled: false, personal_record: false, user: user3)
