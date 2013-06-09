@@ -11,6 +11,7 @@ class GymdaysController < ApplicationController
   # GET /gymdays/1
   # GET /gymdays/1.json
   def show
+     @today = Gymday.find_by(gym_date: params[:id])
   end
 
   # GET /gymdays/new
