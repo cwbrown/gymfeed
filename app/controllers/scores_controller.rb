@@ -19,6 +19,7 @@ class ScoresController < ApplicationController
 
   # GET /scores/1/edit
   def edit
+    @score = Score.find(params[:id])
   end
 
   # POST /scores
@@ -41,7 +42,7 @@ class ScoresController < ApplicationController
   # PATCH/PUT /scores/1.json
   def update
     respond_to do |format|
-      if @score.update(score_params)
+      if @score.update(score_param  s)
         format.html { redirect_to @score, notice: 'Score was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +70,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:value)
+      params.require(:score).permit(:value, :scaled, :personal_record, :completed)
     end
 end

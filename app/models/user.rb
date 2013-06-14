@@ -9,9 +9,6 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
   
-  # NEED TO DETERMINE RAILS 4 ALT
-  #attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""

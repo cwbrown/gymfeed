@@ -1,4 +1,5 @@
-<%= form_for(@score) do |f| %>
+<%= simple_form_for @score, html: { class: 'form-horizontal' } do |f| %>
+
   <% if @score.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@score.errors.count, "error") %> prohibited this score from being saved:</h2>
@@ -11,11 +12,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.input :value %>
+    <%= f.input :scaled, as: :boolean %>
+    <%= f.input :personal_record, as: :boolean %>
+    <%= f.input :completed, as: :datetime %>
+    <%= f.button :submit %>
 <% end %>
