@@ -4,14 +4,20 @@ class GymdaysController < ApplicationController
   # GET /gymdays
   # GET /gymdays.json
   def index
-    #@gymdays = Gymday.all
-    @today = Gymday.find_by(gym_date: Date.today) #where(gym_date: Date.today)
+
+    unless @today = Gymday.find_by(gym_date: Date.today)
+      @today = Gymday.last
+      flash[:error] = "There is no workout recorded for today.  Showing most recent recorded workout instead (#{@today.gym_date.to_s})." 
+    end
   end
 
   # GET /gymdays/1
   # GET /gymdays/1.json
   def show
-     @today = Gymday.find_by(gym_date: params[:id])
+    unless @today = Gymday.find_by(gym_date: params[:id])
+      @today = Gymday.last
+      flash.now[:error] = "There is no workout recorded for #{params[:id]}.  Showing most recent recorded workout instead (#{@today.gym_date.to_s})." 
+    end
   end
 
   # GET /gymdays/new
