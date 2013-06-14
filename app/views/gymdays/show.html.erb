@@ -3,7 +3,7 @@
       <div class="row-fluid">
         <div class="span2 sidebar">
           <!--Sidebar content-->
-          <p><%= @today.workout.description %></p>
+          <p><%= @today.workout.description if @today.workout %></p>
         </div>
       <div class="span10">
           <div class="span2">

@@ -42,7 +42,7 @@ class ScoresController < ApplicationController
   # PATCH/PUT /scores/1.json
   def update
     respond_to do |format|
-      if @score.update(score_param  s)
+      if @score.update(score_params)
         format.html { redirect_to @score, notice: 'Score was successfully updated.' }
         format.json { head :no_content }
       else

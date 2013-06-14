@@ -1,4 +1,5 @@
-<%= form_for(@gymday) do |f| %>
+<%= simple_form_for @gymday, html: { class: 'form-horizontal' } do |f| %>
+
   <% if @gymday.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@gymday.errors.count, "error") %> prohibited this gymday from being saved:</h2>
@@ -11,11 +12,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.input :location %><br>
+    <%= f.input :gym_date, as: :date %>
+    <%= f.button :submit %>
 <% end %>
