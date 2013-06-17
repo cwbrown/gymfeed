@@ -22,9 +22,45 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
   end
 
+
+  def date_from_date_select_fields(params, name)
+    parts = (1..6).map do |e|
+      params["#{name}(#{e}i)"].to_i
+    end
+
+    # remove trailing zeros
+    parts = parts.slice(0, parts.rindex{|e| e != 0}.to_i + 1)
+    return nil if parts[0] == 0  # empty date fields set
+
+    DateTime.new(*parts)
+  end
+
   # POST /scores
   # POST /scores.json
   def create
+
+    if params[:score][:scaled] == 1
+      params[:score][:scaled] = true
+    else
+      params[:score][:scaled] = false
+    end
+
+    if params[:score][:personal_record] == 1
+      params[:score][:personal_record] = true
+    else
+      params[:score][:personal_record] = false
+    end
+
+    #params[:score][:scaled] = true if params[:score][:scaled] == 1 else false
+    
+    params[:score][:completed] = date_from_date_select_fields(params[:score], 'completed')
+
+    params[:score].delete("completed(1i)")
+    params[:score].delete("completed(2i)")
+    params[:score].delete("completed(3i)")
+    params[:score].delete("completed(4i)")
+    params[:score].delete("completed(5i)")
+
     @score = Score.new(score_params)
 
     respond_to do |format|
