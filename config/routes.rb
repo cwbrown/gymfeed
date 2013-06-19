@@ -6,7 +6,7 @@ Gymfeed::Application.routes.draw do
 
   resources :gymdays
 
-  root :to => "gymdays#index"
+  root :to => "home#index"
   
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

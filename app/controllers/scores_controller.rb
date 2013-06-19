@@ -39,13 +39,13 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
 
-    if params[:score][:scaled] == 1
+    if params[:score][:scaled] == 1.to_s
       params[:score][:scaled] = true
     else
       params[:score][:scaled] = false
     end
 
-    if params[:score][:personal_record] == 1
+    if params[:score][:personal_record] == 1.to_s
       params[:score][:personal_record] = true
     else
       params[:score][:personal_record] = false
@@ -61,7 +61,12 @@ class ScoresController < ApplicationController
     params[:score].delete("completed(4i)")
     params[:score].delete("completed(5i)")
 
+    #params[:score][:gymday] = Gymday.find_by(gym_date: Date.today)
+
     @score = Score.new(score_params)
+
+    @score.gymday = Gymday.find_by(gym_date: Date.today)
+#    @score.user = User.find_by(id: params[:score][:user])
 
     respond_to do |format|
       if @score.save
@@ -106,6 +111,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:value, :scaled, :personal_record, :completed)
+      params.require(:score).permit(:value, :scaled, :personal_record, :completed, :user)
     end
 end

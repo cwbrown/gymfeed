@@ -1,5 +1,42 @@
-<h3>Home</h3>
-<% @scores.each do |score| %>
-  <p>User: <%= score.user.name %> </p>
-  <p>Value: <%= score.value %> </p>
-<% end %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2 sidebar">
+          <!--Sidebar content-->
+          <p><%= @today.workout.description if @today.workout %></p>
+        </div>
+      <div class="span10">
+          <div class="span2">
+          </div>
+          <div class="span7">
+            <div class="navbar">
+              <ul class="nav">
+                <li><%= link_to('Yesterday',  gymday_path(id: (@today.gym_date - 1).to_s.parameterize)) %></li>
+                <li class="active"><%= link_to('Today',      gymday_path(id: @today.gym_date.to_s.parameterize)) %></li>
+                <li><%= link_to('Tomorrow',   gymday_path(id: (@today.gym_date + 1).to_s.parameterize)) %></li>
+              </ul>
+            </div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Record</th>
+                <th>Completed</th>
+              </tr>
+            </thead>            
+            <tbody>
+            <% @today.scores.each do |score| %>
+              <tr class=<%= score.personal_record? ? "success" : "" %>>
+                <td><%= score.user.name %></td>
+                <td><%= score.value %><%= score.scaled? ? "*" : ""%></td>
+                <td><i class=<%= score.personal_record? ? "icon-check" : "icon-minus" %>></i></td>
+                <td><%= score.completed.strftime("%I:%M %a %B %d, %Y") %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <% if user_signed_in? %>
+            <%= link_to 'Add Score', new_score_path, { class: "btn btn-large btn-primary btn-block" }%>
+          <% end %>
+        </div>
+      </div>
