@@ -1,14 +1,17 @@
 Gymfeed::Application.routes.draw do
   
-  resources :scores
+devise_for :admins
+devise_for :users
 
+
+  resources :scores
+  resources :users
   resources :workouts
 
   resources :gymdays
 
   root :to => "home#index"
   
-  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
