@@ -13,7 +13,7 @@ puts 'New user created: ' << user2.name
 user3 = User.create! :name => 'Chris Brown', :email => 'chris@emerfit.com', :password => '1234Please', :password_confirmation => '1234Please'
 puts 'New user created: ' << user3.name
 
-Admin.create! :email => 'admin@emerfit.com', :password => '1234Please', :password_confirmation => '1234Please'
+Admin.create! :name => 'admin', :email => 'admin@emerfit.com', :password => '1234Please', :password_confirmation => '1234Please'
 
 
 puts "SETTING UP DEFAULT GYM DAY YESTERDAY"
