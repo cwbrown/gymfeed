@@ -1,9 +1,9 @@
 Gymfeed::Application.routes.draw do
   
-devise_for :admins
-devise_for :users
 
-
+  devise_for :users
+  devise_for :admins
+  
   resources :scores
   resources :users
   resources :workouts
