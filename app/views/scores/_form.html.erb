@@ -15,9 +15,14 @@
     <% if admin_signed_in? %>
       <%= f.input :user, collection: User.all, :label_method => :name, :value_method => :id %>
     <% end %>
-    <%= f.input :value, :input_html => { :class => "span6" }, :label => "Your Score" %>
-    <%= f.input :scaled, as: :boolean, :inline_label => "Yes, I scaled" %>
-    <%= f.input :personal_record, as: :boolean %>
+
+    <%= f.input :name, :wrapper => :prepend, :label => false do %>
+      <%= content_tag :span, "Your Score", :class => "add-on" %>
+      <%= f.input_field :value %>
+    <% end %>
+
+    <%= f.input :scaled, as: :boolean, :label => false, :inline_label => "I scaled." %>
+    <%= f.input :personal_record, as: :boolean, :label => false, :inline_label => "I set a personal record." %>
     <%= f.input :completed, as: :datetime %>
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>
