@@ -36,7 +36,9 @@
             </tbody>
           </table>
           <% if user_signed_in? %>
-            <%= link_to 'Add Score', new_score_path, { class: "btn btn-large btn-block" }%>
+            <%= link_to 'Add Your Score', new_score_path, { class: "btn btn-large btn-block" }%>
+          <% elsif admin_signed_in? %>
+            <%= link_to 'Add Scores', new_score_path, { class: "btn btn-large btn-block" }%>
           <% end %>
         </div>
       </div>
