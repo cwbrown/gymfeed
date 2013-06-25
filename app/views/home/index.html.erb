@@ -30,7 +30,7 @@
                 <td><%= score.user.name %></td>
                 <td><%= score.value %><%= score.scaled? ? "*" : ""%></td>
                 <td><i class=<%= score.personal_record? ? "icon-check" : "icon-minus" %>></i></td>
-                <td><%= score.completed.strftime("%I:%M %a %B %d, %Y") %></td>
+                <td><%= score.training_time %></td>
               </tr>
             <% end %>
             </tbody>
