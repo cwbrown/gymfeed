@@ -20,22 +20,22 @@ puts "SETTING UP DEFAULT GYM DAY YESTERDAY"
 gymday1 = Gymday.create!(location: 'EmerFit', gym_date: Date.yesterday, 
 	workout: Workout.new(name: 'Jackie', program: 'wod', description: 'Row 1000m, 50 Thrusters, 25 Pull-ups'))
 
-gymday1.scores.create!(value: '5:02', completed: DateTime.yesterday, scaled: false, personal_record: false, user: user1)
-gymday1.scores.create!(value: '6:30', completed: DateTime.yesterday, scaled: false, personal_record: true, user: user2)
-gymday1.scores.create!(value: '7:02', completed: DateTime.yesterday, scaled: true, personal_record: false, user: user3)
+gymday1.scores.create!(value: '5:02', training_day: Date.yesterday, training_time: "6:00", scaled: false, personal_record: false, user: user1)
+gymday1.scores.create!(value: '6:30', training_day: Date.yesterday, training_time: "6:00", scaled: false, personal_record: true, user: user2)
+gymday1.scores.create!(value: '7:02', training_day: Date.yesterday, training_time: "6:00", scaled: true, personal_record: false, user: user3)
 
 puts "SETTING UP DEFAULT GYM DAY TODAY"
 gymday2 = Gymday.create!(location: 'EmerFit', gym_date: Date.today, 
 	workout: Workout.new(name: 'Helen', program: 'wod', description: '3 rounds Run 400m, 12 Pull-ups, 21 Swings'))
 
-gymday2.scores.create!(value: '7:00', completed: DateTime.now , scaled: true, personal_record: false, user: user1)
-gymday2.scores.create!(value: '7:15', completed: DateTime.now, scaled: false, personal_record: false, user: user2)
-gymday2.scores.create!(value: '8:11', completed: DateTime.now, scaled: false, personal_record: true, user: user3)
+gymday2.scores.create!(value: '7:00', training_day: Date.today, training_time: "6:00", scaled: true, personal_record: false, user: user1)
+gymday2.scores.create!(value: '7:15', training_day: Date.today, training_time: "6:00", scaled: false, personal_record: false, user: user2)
+gymday2.scores.create!(value: '8:11', training_day: Date.today, training_time: "6:00", scaled: false, personal_record: true, user: user3)
 
 puts "SETTING UP DEFAULT GYM DAY TOMORROW"
 gymday3 = Gymday.create!(location: 'EmerFit', gym_date: Date.tomorrow, 
 	workout: Workout.new(name: 'Half Cindy', program: 'wod', description: '10:00 AMRAP 5 Pull-ups, 10 Push-ups, 15 Squats'))
 
-gymday3.scores.create!(value: '9', completed: DateTime.tomorrow, scaled: false, personal_record: false, user: user1)
-gymday3.scores.create!(value: '7', completed: DateTime.tomorrow, scaled: false, personal_record: false, user: user2)
-gymday3.scores.create!(value: '8', completed: DateTime.tomorrow, scaled: false, personal_record: false, user: user3)
+gymday3.scores.create!(value: '9', training_day: Date.tomorrow, training_time: "6:00", scaled: false, personal_record: false, user: user1)
+gymday3.scores.create!(value: '7', training_day: Date.tomorrow, training_time: "6:00", scaled: false, personal_record: false, user: user2)
+gymday3.scores.create!(value: '8', training_day: Date.tomorrow, training_time: "6:00", scaled: false, personal_record: false, user: user3)

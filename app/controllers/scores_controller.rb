@@ -25,7 +25,7 @@ class ScoresController < ApplicationController
 
 
   def date_from_date_select_fields(params, name)
-    parts = (1..6).map do |e|
+    parts = (1..3).map do |e|
       params["#{name}(#{e}i)"].to_i
     end
 
@@ -51,22 +51,20 @@ class ScoresController < ApplicationController
     else
       params[:score][:personal_record] = false
     end
-
-    #params[:score][:scaled] = true if params[:score][:scaled] == 1 else false
     
-    params[:score][:completed] = date_from_date_select_fields(params[:score], 'completed')
-
-    params[:score].delete("completed(1i)")
-    params[:score].delete("completed(2i)")
-    params[:score].delete("completed(3i)")
-    params[:score].delete("completed(4i)")
-    params[:score].delete("completed(5i)")
-
-    #params[:score][:gymday] = Gymday.find_by(gym_date: Date.today)
+    params[:score][:training_day] = date_from_date_select_fields(params[:score], 'training_day')
+    params[:score].delete("training_day(1i)")
+    params[:score].delete("training_day(2i)")
+    params[:score].delete("training_day(3i)")
 
     @score = Score.new(score_params)
 
+    # Need to find gymday by :training_day
     @score.gymday = Gymday.find_by(gym_date: Date.today)
+
+    if user_signed_in?
+     @score.user = current_user
+    end 
 #    @score.user = User.find_by(id: params[:score][:user])
 
     respond_to do |format|
@@ -112,6 +110,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:value, :scaled, :personal_record, :completed, :user)
+      params.require(:score).permit(:value, :scaled, :personal_record, :training_day, :training_time, :user)
     end
 end
