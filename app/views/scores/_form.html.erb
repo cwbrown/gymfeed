@@ -23,7 +23,7 @@
 
     <%= f.input :scaled, as: :boolean, :label => false, :inline_label => "I scaled." %>
     <%= f.input :personal_record, as: :boolean, :label => false, :inline_label => "I set a personal record." %>
-    <%= f.input :training_day, as: :date, label: "Training Day" %>
+    <%= f.input :training_date, :as => :datepicker %>
     <%= f.input :training_time, collection: ['6:00', '7:00', '9:30', '12:00', '4:30', '5:30', '6:30', 'Other'], prompt: "Select your training time", label: "Training Score" %>    
     <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>

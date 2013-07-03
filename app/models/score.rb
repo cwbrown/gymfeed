@@ -3,7 +3,7 @@ class Score
 
   field :value, type: BigDecimal
 #  field :completed, type: DateTime
-  field :training_day, type: Date
+  field :training_date, type: Date
   field :training_time, type: String
   field :scaled, type: Boolean
   field :personal_record, type: Boolean

@@ -52,10 +52,10 @@ class ScoresController < ApplicationController
       params[:score][:personal_record] = false
     end
     
-    params[:score][:training_day] = date_from_date_select_fields(params[:score], 'training_day')
-    params[:score].delete("training_day(1i)")
-    params[:score].delete("training_day(2i)")
-    params[:score].delete("training_day(3i)")
+#    params[:score][:training_date] = date_from_date_select_fields(params[:score], 'training_date')
+ #   params[:score].delete("training_date(1i)")
+  #  params[:score].delete("training_date(2i)")
+   # params[:score].delete("training_date(3i)")
 
     @score = Score.new(score_params)
 
@@ -110,6 +110,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:value, :scaled, :personal_record, :training_day, :training_time, :user)
+      params.require(:score).permit(:value, :scaled, :personal_record, :training_date, :training_time, :user)
     end
 end
